@@ -1,0 +1,85 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #fff8f0;
+    color: #333;
+  }
+  
+  header {
+    background-color: #f9c5d1;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+    color: #4b2e2e;
+  }
+  
+  nav {
+    background-color: #ffd5ec;
+    padding: 10px 0;
+    text-align: center;
+  }
+  
+  nav a {
+    margin: 0 15px;
+    text-decoration: none;
+    color: #4b2e2e;
+    font-weight: bold;
+  }
+  
+  .hero {
+    background-image: url('https://placekitten.com/1200/400');
+    background-size: cover;
+    background-position: center;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-shadow: 2px 2px 5px #000;
+  }
+  
+  .hero h2 {
+    font-size: 3rem;
+  }
+  
+  .content {
+    padding: 40px 20px;
+    text-align: center;
+  }
+  
+  .menu {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 30px;
+  }
+  
+  .menu-item {
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  }
+  
+  .menu-item img {
+    width: 100%;
+    border-radius: 10px;
+  }
+  
+  footer {
+    background-color: #f9c5d1;
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+  }
+  
+  @media (max-width: 600px) {
+    .hero h2 {
+      font-size: 2rem;
+    }
+  }
+  

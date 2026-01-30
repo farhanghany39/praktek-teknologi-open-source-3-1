@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Data Siswa TKJ</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <nav>
+        <a href="/">Home</a>
+        <a href="/about">About Us</a>
+        <a href="/harga">Harga</a>
+        <a href="/siswa">Data Siswa</a>
+    </nav>
+
+    <div class="container">
+        <h1>Data Siswa TKJ</h1>
+        <p>Data siswa diambil dari API <code>/api/siswa</code></p>
+
+        <div id="loading">Memuat data...</div>
+        <div id="error" style="display: none; color: red;"></div>
+        <table id="siswa-table" class="siswa-table" style="display: none;">
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Nama</th>
+                    <th>NIS</th>
+                    <th>TTL</th>
+                    <th>Nama Orang Tua</th>
+                    <th>Alamat</th>
+                </tr>
+            </thead>
+            <tbody id="siswa-data">
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        // Fetch data from API and display it
+        fetch('/api/siswa')
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('loading').style.display = 'none';
+                const table = document.getElementById('siswa-table');
+                const tbody = document.getElementById('siswa-data');
+
+                data.forEach(siswa => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${siswa.no}</td>
+                        <td>${siswa.nama}</td>
+                        <td>${siswa.nis}</td>
+                        <td>${siswa.ttl}</td>
+                        <td>${siswa.nama_ortu}</td>
+                        <td>${siswa.alamat}</td>
+                    `;
+                    tbody.appendChild(row);
+                });
+
+                table.style.display = 'table';
+            })
+            .catch(error => {
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('error').style.display = 'block';
+                document.getElementById('error').textContent = 'Error loading data: ' + error.message;
+            });
+    </script>
+</body>
+</html>

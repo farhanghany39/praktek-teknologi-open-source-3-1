@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Daftar Harga</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <nav>
+        <a href="/">Home</a>
+        <a href="/about">About Us</a>
+        <a href="/harga">Harga</a>
+        <a href="/siswa">Data Siswa</a>
+    </nav>
+    
+    <div class="container">
+        <h1>Daftar Paket & Harga</h1>
+        
+        <ul class="price-list">
+            {% for item in data_harga %}
+                <li class="price-item">
+                    <span class="price-nama">{{ item.paket }}</span>
+                    <span class="price-biaya">{{ item.biaya }}</span>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>

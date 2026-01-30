@@ -1,0 +1,225 @@
+/* static/style.css */
+
+/* --- VARIABEL WARNA (Agar mudah diganti nanti) --- */
+:root {
+    --primary-color: #4f46e5;    /* Indigo modern */
+    --secondary-color: #818cf8;  /* Indigo muda */
+    --accent-color: #10b981;     /* Emerald green untuk harga/sukses */
+    --dark-text: #1e293b;        /* Slate dark */
+    --light-text: #64748b;       /* Slate gray */
+    --background: #f1f5f9;       /* Light gray blue */
+    --white: #ffffff;
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
+
+/* --- RESET DASAR --- */
+* {
+    box-sizing: border-box; /* Penting agar padding tidak merusak layout */
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: var(--background);
+    color: var(--dark-text);
+    line-height: 1.7;
+    min-height: 100vh;
+}
+
+/* --- NAVIGASI --- */
+nav {
+    background-color: var(--white);
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: center; /* Menu di tengah */
+    align-items: center;
+    box-shadow: var(--shadow-sm);
+    position: sticky; /* Menu tetap di atas saat scroll */
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+nav a {
+    color: var(--light-text);
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 8px 16px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+nav a:hover {
+    color: var(--primary-color);
+    background-color: #eef2ff; /* Efek highlight halus saat hover */
+}
+
+/* --- CONTAINER UTAMA --- */
+.container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 0 20px;
+    animation: fadeIn 0.8s ease-out; /* Animasi muncul pelan */
+}
+
+/* Animasi Fade In */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- JUDUL --- */
+h1 {
+    color: var(--dark-text);
+    text-align: center;
+    font-size: 2.25rem;
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.025em;
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+h1::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: var(--primary-color);
+    margin: 10px auto 0;
+    border-radius: 2px;
+}
+
+p {
+    color: var(--light-text);
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto 30px auto;
+}
+
+/* --- KARTU HARGA (CARD) --- */
+.price-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    list-style: none;
+    padding: 0;
+}
+
+.price-item {
+    background: var(--white);
+    border-radius: 16px;
+    padding: 30px;
+    box-shadow: var(--shadow-md);
+    border: 1px solid transparent;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.price-item:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--secondary-color);
+}
+
+.price-nama {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--dark-text);
+    margin-bottom: 10px;
+}
+
+.price-biaya {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--primary-color);
+    margin-top: auto; /* Mendorong harga ke bawah */
+    padding-top: 15px;
+}
+
+/* --- TABEL SISWA (Data API) --- */
+.siswa-table-container {
+    overflow-x: auto; /* Agar bisa discroll horizontal di HP */
+    border-radius: 12px;
+    box-shadow: var(--shadow-md);
+}
+
+.siswa-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--white);
+    overflow: hidden;
+}
+
+.siswa-table th {
+    background-color: var(--primary-color);
+    color: var(--white);
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+    padding: 16px;
+    text-align: left;
+}
+
+.siswa-table td {
+    padding: 16px;
+    border-bottom: 1px solid #e2e8f0;
+    color: var(--light-text);
+    font-size: 0.95rem;
+}
+
+.siswa-table tr:last-child td {
+    border-bottom: none;
+}
+
+.siswa-table tr:nth-child(even) {
+    background-color: #f8fafc;
+}
+
+.siswa-table tr:hover {
+    background-color: #f1f5f9;
+}
+
+/* --- LOADING & ERROR --- */
+#loading {
+    text-align: center;
+    padding: 40px;
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+#error {
+    background-color: #fee2e2;
+    color: #991b1b;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    border: 1px solid #fecaca;
+}
+
+/* --- RESPONSIVE (HP) --- */
+@media (max-width: 600px) {
+    nav {
+        flex-direction: column;
+        padding: 1rem;
+    }
+    
+    nav a {
+        margin: 5px 0;
+        width: 100%;
+        text-align: center;
+    }
+
+    h1 {
+        font-size: 1.75rem;
+    }
+}
